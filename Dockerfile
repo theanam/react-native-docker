@@ -40,5 +40,7 @@ RUN npm install -g yarn && yarn global add react-native-cli create-react-native-
 VOLUME ["/app","/root/.gradle"]
 # CHANGE WORKDIR
 WORKDIR /app
+# REAT NATIVE PORT 
+EXPOSE 8081
 # DEFAULT REACT NATIVE COMMAND
 CMD react-native
