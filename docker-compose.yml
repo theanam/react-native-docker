@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  react-native:
+    build: .
+    image: react-native-android
+    container_name: react_native_android
+    user: $USER_ID:$USER_ID
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - $PWD:/app
+    privileged: true

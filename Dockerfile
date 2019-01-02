@@ -1,6 +1,6 @@
 FROM openjdk:8
 
-# Forcked from https://github.com/theanam/react-native-docker
+# Forked from https://github.com/theanam/react-native-docker
 LABEL MAINTAINER STEPHANE RICHIN
 LABEL VERSION 0.1
 LABEL AUTHOR_EMAIL stephane@novaway.fr
@@ -53,18 +53,6 @@ RUN npm install -g yarn && yarn global add react-native-cli
 # CHANGE WORKDIR
 WORKDIR $HOME
 
-RUN chmod a+rwx $HOME
-
-# GOSU
-RUN arch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
-    && wget -O gosu "https://github.com/tianon/gosu/releases/download/1.10/gosu-$arch" \
-    && mv ./gosu /usr/local/bin/gosu \
-    && chmod +x /usr/local/bin/gosu
-
-COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
-
-RUN chmod a+x /usr/local/bin/entrypoint.sh
-
 # VOLUMES
 VOLUME ["/app","/root/.gradle"]
 
@@ -73,6 +61,3 @@ EXPOSE 8081
 
 # DEFAULT REACT NATIVE COMMAND
 CMD react-native
-
-# ENTRYPOINT
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
