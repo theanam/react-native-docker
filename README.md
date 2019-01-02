@@ -2,7 +2,7 @@
 
 > A better documentation will come really soon.
 
-Docker Image for Building React Native Apps. 
+Docker Image for Building React Native Apps.
 
 ### What's included:
 
@@ -10,7 +10,7 @@ React native, Create-React-Native-App, Android SKD, Gradle, Maven, Batteries
 
 This container should run in any Unix/Unix Inspired system (Linux, Mac). Not tested on windows (you can let me know)
 
-### How to use: 
+### How to use:
 
 You can run most of the react native related commands without installing anything locally. You can even use it with CI/CD.
 
@@ -23,3 +23,7 @@ now if you prefix `rndocker` before any react native command, it will work just 
 The repository also contains all the build tools so you should be able to build apk too.
 
 > Enjoy. While I work on a better documentation
+
+## TODO
+
+Use no root use on android-sdk folder

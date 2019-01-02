@@ -2,11 +2,14 @@ version: "3"
 
 services:
   react-native:
-    build: .
+    build: ./config/docker/nodejs
     image: react-native-android
     container_name: react_native_android
-    user: $USER_ID:$USER_ID
+    ports:
+      - 8081:8081
     volumes:
       - /dev/bus/usb:/dev/bus/usb
+      - $HOME/.docker-gradle:/root/.gradle
+      - $HOME/.docker-android:/root/.android
       - $PWD:/app
     privileged: true

@@ -7,8 +7,8 @@ export $(shell sed 's/=.*//' .env)
 
 DOCKERCOMPO = USER_ID=${USER_ID} docker-compose -p $(COMPOSE_PROJECT_NAME)
 DOCKERCOMPORUN = ${DOCKERCOMPO} run
-DOCKERRN = ${DOCKERCOMPORUN} react-native
-DOCKERPROJECT = $(DOCKERCOMPORUN) -w /app/$(REACT_NATIVE_APP_NAME) react-native
+DOCKERRN = ${DOCKERCOMPORUN} --user="$(USER_ID):$(USER_ID)" react-native
+DOCKERSPRN = $(DOCKERCOMPORUN) --service-ports react-native
 DOCKERRNRM = ${DOCKERCOMPORUN} --rm react-native
 
 # Help
@@ -25,10 +25,11 @@ help: ## Display this help
 docker-init:
 	@echo "--> Init react-native project"
 	$(DOCKERRN) react-native init $(REACT_NATIVE_APP_NAME)
+	chmod +x ./scripts/init.sh && ./scripts/init.sh
 
 docker-run-android:
 	@echo "--> Run app on android devices"
-	$(DOCKERPROJECT) react-native run-android
+	$(DOCKERSPRN) react-native run-android
 
 docker-down:
 	@echo "--> Stopping docker services"
