@@ -22,11 +22,6 @@ help: ## Display this help
 ##########
 # Docker #
 ##########
-docker-init:
-	@echo "--> Init react-native project"
-	$(DOCKERRN) react-native init $(REACT_NATIVE_APP_NAME)
-	chmod +x ./scripts/init.sh && ./scripts/init.sh
-
 docker-run-android:
 	@echo "--> Run app on android devices"
 	$(DOCKERSPRN) react-native run-android
