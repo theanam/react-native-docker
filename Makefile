@@ -1,15 +1,13 @@
 # User ID
-export USER_ID=`id -u`
+USER_ID=`id -u`
 
 # include .env variables
 -include .env
 export $(shell sed 's/=.*//' .env)
 
-DOCKERCOMPO = USER_ID=${USER_ID} docker-compose -p $(COMPOSE_PROJECT_NAME)
-DOCKERCOMPORUN = ${DOCKERCOMPO} run
-DOCKERRN = ${DOCKERCOMPORUN} --user="$(USER_ID):$(USER_ID)" react-native
-DOCKERSPRN = $(DOCKERCOMPORUN) --service-ports react-native
-DOCKERRNRM = ${DOCKERCOMPORUN} --rm react-native
+DOCKERCOMPO = USER_ID=$(USER_ID) docker-compose -p $(COMPOSE_PROJECT_NAME)
+DOCKERCORRM = ${DOCKERCOMPO} run --rm --service-ports react-native
+DOCKERYARN = ${DOCKERCORRM} yarn
 
 # Help
 .SILENT:
@@ -22,10 +20,15 @@ help: ## Display this help
 ##########
 # Docker #
 ##########
-docker-run-android:
-	@echo "--> Run app on android devices"
-	$(DOCKERSPRN) react-native run-android
-
+docker-build:
+	@echo "--> Building docker image"
+	$(DOCKERCOMPO) build
 docker-down:
 	@echo "--> Stopping docker services"
-	docker-compose -p $(COMPOSE_PROJECT_NAME) down
+	$(DOCKERCOMPO) down
+# docker-run-android:
+# 	@echo "--> Run Android app"
+# 	$(DOCKERYARN) mobile:android:run
+docker-run:
+	@echo "--> Run Docker container"
+	$(DOCKERCORRM) bash
