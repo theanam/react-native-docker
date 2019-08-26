@@ -2,7 +2,7 @@ FROM openjdk:8
 
 LABEL MAINTAINER ANAM AHMED
 LABEL VERSION 0.1
-LABEL AUTHOR_EMAIL anam.ahmed.a@gmail.com
+LABEL AUTHOR-EMAIL anam.ahmed.a@gmail.com
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update && apt-get -y install nodejs unzip
 # ENV VARIABLES
@@ -35,7 +35,8 @@ RUN export PATH=$PATH:$ANDROID_HOME/emulator\
     && export PATH=$PATH:/opt/gradle/gradle-${GRADLE_VERSION}/bin\
     && export PATH=$PATH:/opt/maven/apache-maven-${MAVEN_VERSION}/bin\
     && echo PATH=$PATH:$ANDROID_HOME/platform-tools>>/etc/bash.bashrc
-RUN npm install -g yarn && yarn global add react-native-cli create-react-native-app
+# INSTALL YARN, REACT NATIVE CLI, CREATE-REACT-NATIVE-APP
+RUN npm install -g yarn && yarn global add react-native-cli create-react-native-app expo-cli
 # VOLUMES
 VOLUME ["/app","/root/.gradle"]
 # CHANGE WORKDIR
