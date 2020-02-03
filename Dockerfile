@@ -1,17 +1,17 @@
 FROM openjdk:8
 
 LABEL MAINTAINER ANAM AHMED
-LABEL VERSION 0.1
+LABEL VERSION 0.3
 LABEL AUTHOR-EMAIL anam.ahmed.a@gmail.com
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get update && apt-get -y install nodejs unzip
 # ENV VARIABLES
 ENV SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip" \
     ANDROID_HOME="/usr/local/android-sdk" \
     ANDROID_VERSION=27 \
     ANDROID_BUILD_TOOLS_VERSION=28.0.3\
-    GRADLE_VERSION=5.0\
-    MAVEN_VERSION=3.6.0
+    GRADLE_VERSION=6.1.1\
+    MAVEN_VERSION=3.6.3
 
 WORKDIR ${ANDROID_HOME}
 # GET SDK MANAGER
@@ -41,7 +41,7 @@ RUN npm install -g yarn && yarn global add react-native-cli create-react-native-
 VOLUME ["/app","/root/.gradle"]
 # CHANGE WORKDIR
 WORKDIR /app
-# REAT NATIVE PORT 
-EXPOSE 8081
+# REAT NATIVE PORT
+EXPOSE 8081 5555
 # DEFAULT REACT NATIVE COMMAND
 CMD react-native
