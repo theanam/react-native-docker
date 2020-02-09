@@ -38,6 +38,7 @@ once you get the IP address, you should be able to connect to the adb server usi
     adb connect <phone-ip-address>
 
 [This section needs better docs]
+
 ### How to use (Legacy, Still works, has some caveats): 
 
 You can run most of the react native related commands without installing anything locally. You can even use it with CI/CD.

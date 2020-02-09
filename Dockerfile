@@ -1,8 +1,8 @@
 FROM openjdk:8
 
 LABEL MAINTAINER ANAM AHMED
-LABEL VERSION 0.3
-LABEL AUTHOR-EMAIL anam.ahmed.a@gmail.com
+LABEL VERSION 0.4
+LABEL AUTHOR_EMAIL me@anam.co
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get update && apt-get -y install nodejs unzip
 # ENV VARIABLES
@@ -41,7 +41,7 @@ RUN npm install -g yarn && yarn global add react-native-cli create-react-native-
 VOLUME ["/app","/root/.gradle"]
 # CHANGE WORKDIR
 WORKDIR /app
-# REAT NATIVE PORT
+# REACT NATIVE PORT AND ADB PORT
 EXPOSE 8081 5555
 # DEFAULT REACT NATIVE COMMAND
 CMD react-native
