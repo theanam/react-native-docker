@@ -27,7 +27,7 @@ The command should land you inside the container shell. You will find every tool
 
 You can chose to mount USB device file as a bind mount for linux, But for mac and windows, you have to use remote ADB. To use host USB with ADB, **modify the command** like this (Should work on linux hosts) 
 
-    docker run --rm -it -v `pwd`:/app -v --privileged -v /dev/bus/usb:/dev/bus/usb --network host theanam/react-native bash
+    docker run --rm -it -v `pwd`:/app --privileged -v /dev/bus/usb:/dev/bus/usb --network host theanam/react-native bash
 
 For mac (and probably for windows, because I haven't tested), You need to follow some steps. 
 
